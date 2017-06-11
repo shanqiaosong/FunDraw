@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>con bar</title>
+  <link rel="stylesheet" type="text/css" href="cb.css">
+  <script type="text/javascript" src='http://libs.useso.com/js/jquery/2.1.0/jquery.js'></script>
+</head>
+<body>
+<div id='Fundraw1'>
+<style type='text/css'>
+
+
+
+canvas {
+    cursor: pointer;
+    border: solid #D2D2D2 1px;
+    margin: 20px auto;
+}
+
+#Funpanel{
+    position: fixed;
+    top: 12px;
+    left: 23px;
+    width: 420px;
+}
+
+#Funpanel *:not(input){
+    -moz-user-select: none;
+-o-user-select:none;
+-khtml-user-select:none;
+-webkit-user-select:none;
+-ms-user-select:none;
+user-select:none;
+}
+
+#FunpanelCon {
+    position: relative;
+    top: -5px;
+    width: 100%;
+    line-height: 38px;
+    position: relative;
+    background-color: white;
+    padding: 7px 16px;
+    border: #2196F3 solid 1px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#FunpanelTi{    color: white;
+    font-size: 15px;
+    padding: 3px 17px 5px 17px;
+    width: 100%;
+    height: 23px;
+    background-color: #2196F3;
+    border-radius: 5px;
+}
+
+.slAdst {
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    left: -51px;
+}
+
+input[type='text']{
+    border: 1px solid #2196F3;
+    border-radius: 4px;
+    padding-left: 6px;
+    height: 19px;
+    margin-right: 25px;
+}
+
+input.up{
+    top: -15px;
+    border-top-right-radius: 4px;
+}
+
+input.down{
+    border-bottom-right-radius: 4px;
+    top: -4px;
+    line-height: 8px;
+}
+
+.slAdstBtn {
+    line-height: 11px;
+    position: absolute;
+    height: 12px;
+    width: 21px;
+    padding: 0;
+    background-color: white;
+    border: #2196F3 1px solid;
+    color: #2196F3;
+}
+
+
+.chk_1 { 
+    display: none; 
+} 
+ 
+.chk_1 + label {
+    font-size: 12px;
+    border: 1px solid #008eff;
+    padding: 3px 9px;
+    border-radius: 5px;
+    position: relative;
+    margin-right: 30px;
+    height: 30pxl;
+} 
+.chk_1 + label:active { 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05); 
+} 
+ 
+.chk_1:checked + label {
+    background-color: #e5f3ff;
+    border: 1px solid #0093ff;
+    color: #243441;
+} 
+ 
+.chk_1:checked + label:after {
+    content: '\2714';
+    top: 0px;
+    left: 4px;
+    color: #0094ff;
+    font-size: 1em;
+    position: relative;
+} 
+
+
+
+input[type='checkbox']{
+    background-color:white;
+    border:red 1px solid;
+}
+
+.ctlbar {
+    margin-left: 10px;
+    display: inline-block;
+    height: 20px;
+    width: 293px;
+    position: relative;
+    top: 5px;
+}
+
+.ctlbarLine {
+    height: 10px;
+    border-bottom: black solid 1px;
+}
+
+.ctlbarDigt {
+    text-align: center;
+    width: 40px;
+    background-color: white;
+    display: inline-block;
+    position: absolute;
+    font-size: 18px;
+    top: 0;
+    padding: 0 5px;
+    font-family: 'Calibri';
+}
+</style>
+<div id='Funpanel'>
+  <div id='FunpanelTi'>Control Panel</div>
+  <div id='FunpanelCon'>
+    <input type='text' onchange='Fundraw()' value='200' id='jx'>
+    <span class='slAdst'>
+      <input class='slAdstBtn up' type='button' value='+' onclick='Funchange(this,10)'>
+      <input class='slAdstBtn down' type='button' value='-' onclick='Funchange(this,-10)'></span>
+    <input type='text' onchange='Fundraw()' value='200' id='jy'>
+    <span class='slAdst'>
+      <input class='slAdstBtn up' type='button' value='+' onclick='Funchange(this,10)'>
+      <input class='slAdstBtn down' type='button' value='-' onclick='Funchange(this,-10)'></span>
+    <br>
+    <input type='text' onchange='Fundraw()' value='300' id='dx'>
+    <span class='slAdst'>
+      <input class='slAdstBtn up' type='button' value='+' onclick='Funchange(this,10)'>
+      <input class='slAdstBtn down' type='button' value='-' onclick='Funchange(this,-10)'></span>
+    <input type='text' onchange='Fundraw()' value='300' id='dy'>
+    <span class='slAdst'>
+      <input class='slAdstBtn up' type='button' value='+' onclick='Funchange(this,20)'>
+      <input class='slAdstBtn down' type='button' value='-' onclick='Funchange(this,-20)'></span>
+    <br>
+    <input type='checkbox' class='chk_1' onclick='Funcline()' id='line' checked>
+    <label for='line'>连线</label>
+    <input type='text' id='zoom' value='20'>
+    <br>
+    <label for='a'>a</label>
+    <div class='ctlbar' value='0' min='-10' max='10'>
+      <div class='ctlbarLine'></div>
+      <span class='ctlbarDigt'></span>
+    </div>
+    <br>
+    <label for='b'>b</label>
+    <div class='ctlbar' value='0' min='-10' max='10'>
+      <div class='ctlbarLine'></div>
+      <span class='ctlbarDigt'></span>
+    </div>
+    <br>
+    <label for='c'>c</label>
+    <div class='ctlbar' value='0' min='-10' max='10'>
+      <div class='ctlbarLine'></div>
+      <span class='ctlbarDigt'></span>
+    </div>
+    <br>
+    <label for='k'>k</label>
+    <div class='ctlbar' value='0' min='-1' max='1'>
+      <div class='ctlbarLine'></div>
+      <span class='ctlbarDigt'></span>
+    </div>
+  </div>
+</div>
+  <canvas id='can'></canvas>
+</div>
+
+<script type="text/javascript">
+  
+
+function panelMove(e2) {
+        console.log(ox,oy)
+    $('#Funpanel').css('left',ox + e2.clientX - x1);
+    $('#Funpanel').css('top',oy + e2.clientY - y1);
+}
+FunpanelTi.addEventListener('mousedown', function(e1) {
+
+    ox = Number($('#Funpanel').css('left').slice(0,-2));
+    oy = Number($('#Funpanel').css('top').slice(0,-2));
+    //console.log(e.clientX,e.clientY)
+    x1 = e1.clientX;
+    y1 = e1.clientY;
+    FunpanelTi.addEventListener('mousemove', panelMove)
+})
+FunpanelTi.addEventListener('mouseup', function() {
+    FunpanelTi.removeEventListener('mousemove', panelMove);
+})
+FunpanelTi.addEventListener('mouseout', function() {
+    FunpanelTi.removeEventListener('mousemove', panelMove);
+})
+
+</script>
+    </body>
+</html>
+
+</script>
+</body>
+</html>

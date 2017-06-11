@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Draw Func</title>
+	<script src="../Js/jquery.min.js">
+</script>
+	<style>
+body{
+    font-family: '微软雅黑'; 
+}
+@font-face {
+    font-family: 'Math';
+    src: url('../Fonts/lmroman9-italic.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+#can{
+	font-family: 'Math';
+}
+#funcgraph{
+	width: 1500px;
+	height: 800px;
+}
+	</style>
+</head>
+<body>
+	<div id="funcgraph"></div>
+	<script src='drawfunc.js'></script>
+	<script>
+
+function logxa(x) {
+	return Math.log(a)/Math.log(x)
+}
+function fun1(x){
+	return Math.abs(c*x+a)+Math.abs(k*x+b);
+}
+function fun2(x){
+	return Math.abs(x+c)+Math.abs(x+k);
+}
+function fun3(x){
+	return Math.acos(x)
+}
+//I love...
+function fun5(x){
+	return Math.abs(x)-Math.abs(x/2+2)-Math.abs(x/2-2)+(Math.abs(x/2+4)+Math.abs(x/2-4)-Math.abs(x/2+2)-Math.abs(x/2-2)+9/2-9*(x+14)*(x+16)/Math.abs(2*(x+14)*(x+16)))*Math.sin(5*Math.PI*x)-3/2 
+}
+
+//简直丧病
+function log(x) {
+	return Math.log(x)
+}
+function sin(x) {
+	return Math.sin((a+1)*x+b)
+}
+function ind(x){
+	return Math.pow(x,a)
+}
+
+//在这里输入函数名！
+Fundraw([log,sin]);
+	</script>
+
+	<!--
+ele.innerHTML="<div id='Fundraw1'><style type='text/css'>canvas {    cursor: pointer;    border: solid #D2D2D2 1px;    margin: 20px auto;}#Funpanel{    position: fixed;    top: 12px;    left: 23px;    width: 420px;}#Funpanel *:not(input){    -moz-user-select: none;-o-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;}#FunpanelCon {    position: relative;    top: -5px;    width: 100%;    line-height: 38px;    position: relative;    background-color: white;    padding: 7px 16px;    border: #2196F3 solid 1px;    border-bottom-left-radius: 5px;    border-bottom-right-radius: 5px;}#FunpanelTi{    color: white;    font-size: 15px;    padding: 3px 17px 5px 17px;    width: 100%;    height: 23px;    background-color: #2196F3;    border-radius: 5px;}.slAdst {    display: inline-block;    position: relative;    top: -1px;    left: -51px;}input[type='text']{    border: 1px solid #2196F3;    border-radius: 4px;    padding-left: 6px;    height: 19px;    margin-right: 25px;}input.up{    top: -15px;    border-top-right-radius: 4px;}input.down{    border-bottom-right-radius: 4px;    top: -4px;    line-height: 8px;}.slAdstBtn {    line-height: 11px;    position: absolute;    height: 12px;    width: 21px;    padding: 0;    background-color: white;    border: #2196F3 1px solid;    color: #2196F3;}.chk_1 {     display: none; }  .chk_1 + label {    font-size: 12px;    border: 1px solid #008eff;    padding: 3px 9px;    border-radius: 5px;    position: relative;    margin-right: 30px;    height: 30pxl;} .chk_1 + label:active {     box-shadow: 0 1px 2px rgba(0,0,0,0.05); }  .chk_1:checked + label {    background-color: #e5f3ff;    border: 1px solid #0093ff;    color: #243441;}  .chk_1:checked + label:after {    content: '\2714';    top: 0px;    left: 4px;    color: #0094ff;    font-size: 1em;    position: relative;} input[type='checkbox']{    background-color:white;    border:red 1px solid;}.ctlbar {    margin-left: 10px;    display: inline-block;    height: 20px;    width: 293px;    position: relative;    top: 5px;}.ctlbarLine {    height: 10px;    border-bottom: black solid 1px;}.ctlbarDigt {    text-align: center;    width: 40px;    background-color: white;    display: inline-block;    position: absolute;    font-size: 18px;    top: 0;    padding: 0 5px;    font-family: 'Calibri';}</style><div id='Funpanel'><div id='FunpanelTi'>Control Panel</div><div id='FunpanelCon'><input type='text' onchange='Fundraw()' value='200' id='jx'><span class='slAdst'><input class='slAdstBtn up' type='button' value='+' onclick='Funchange(this,10)'><input class='slAdstBtn down' type='button' value='-' onclick='Funchange(this,-10)'></span><input type='text' onchange='Fundraw()' value='200' id='jy'><span class='slAdst'><input class='slAdstBtn up' type='button' value='+' onclick='Funchange(this,10)'><input class='slAdstBtn down' type='button' value='-' onclick='Funchange(this,-10)'></span><br><input type='text' onchange='Fundraw()' value='300' id='dx'><span class='slAdst'><input class='slAdstBtn up' type='button' value='+' onclick='Funchange(this,10)'><input class='slAdstBtn down' type='button' value='-' onclick='Funchange(this,-10)'></span><input type='text' onchange='Fundraw()' value='300' id='dy'><span class='slAdst'><input class='slAdstBtn up' type='button' value='+' onclick='Funchange(this,20)'><input class='slAdstBtn down' type='button' value='-' onclick='Funchange(this,-20)'></span><br><input type='checkbox' class='chk_1' onclick='Funcline()' id='line' checked><label for='line'>连线</label><label for='zoom'>缩放速率</label><input type='text' id='zoom' value='20'><br><label for='a'>a</label><div class='ctlbar' value='0' min='-10' max='10'><div class='ctlbarLine'></div><span class='ctlbarDigt'></span></div><br><label for='b'>b</label><div class='ctlbar' value='0' min='-10' max='10'><div class='ctlbarLine'></div><span class='ctlbarDigt'></span></div><br><label for='c'>c</label><div class='ctlbar' value='0' min='-10' max='10'><div class='ctlbarLine'></div><span class='ctlbarDigt'></span></div><br><label for='k'>k</label><div class='ctlbar' value='0' min='-1' max='1'><div class='ctlbarLine'></div><span class='ctlbarDigt'></span></div></div></div><canvas id='can'></canvas></div>"
+
+<div>
+  <button onclick='$(\"#Funpanel\").toggle(\"slow\")'>Control Panel</button>
+  <div id='Funpanel' style='position:absolute;background-color:white;padding:20px;display:none'>
+    <input type='text' onchange='Fundraw()' style='display:inline-block' value='200' id='jx'>
+    <span style='display:inline-block;line-height:4px;width:20px;position: relative;top: 8px;left: -9px;'>
+      <input style='height:12px;width:20px;padding:0' type='button' value='+' onclick='Funchange(this,10)'>
+      <input style='height:12px;width:20px;padding:0' type='button' value='-' onclick='Funchange(this,-10)'></span>
+    <input type='text' onchange='Fundraw()' style='display:inline-block' value='200' id='jy'>
+    <span style='display:inline-block;line-height:4px;width:20px;position: relative;top: 8px;left: -9px;'>
+      <input style='height:12px;width:20px;padding:0' type='button' value='+' onclick='Funchange(this,10)'>
+      <input style='height:12px;width:20px;padding:0' type='button' value='-' onclick='Funchange(this,-10)'></span>
+    <br>
+    <input type='text' onchange='Fundraw()' style='display:inline-block' value='300' id='dx'>
+    <span style='display:inline-block;line-height:4px;width:20px;position: relative;top: 8px;left: -9px;'>
+      <input style='height:12px;width:20px;padding:0' type='button' value='+' onclick='Funchange(this,10)'>
+      <input style='height:12px;width:20px;padding:0' type='button' value='-' onclick='Funchange(this,-10)'></span>
+    <input type='text' onchange='Fundraw()' style='display:inline-block' value='300' id='dy'>
+    <span style='display:inline-block;line-height:4px;width:20px;position: relative;top: 8px;left: -9px;'>
+      <input style='height:12px;width:20px;padding:0' type='button' value='+' onclick='Funchange(this,20)'>
+      <input style='height:12px;width:20px;padding:0' type='button' value='-' onclick='Funchange(this,-20)'></span>
+    <br>
+    <input type='checkbox' style='display:inline-block' onclick='Funcline()' id='line' checked>
+    <label for='line'>连线</label>
+    <input type='text' id='zoom' value='20'>
+    <br>
+    <label for='a'>a</label>
+    <div class='ctlbar' value='0' min='-10' max='10'>
+	<div class='ctlbarLine'></div>
+	<span class='ctlbarDigt'></span>
+	</div>
+	<br>
+    <label for='b'>b</label>
+    <div class='ctlbar' value='0' min='-10' max='10'>
+	<div class='ctlbarLine'></div>
+	<span class='ctlbarDigt'></span>
+	</div>
+	<br>
+    <label for='c'>c</label>
+    <div class='ctlbar' value='0' min='-10' max='10'>
+	<div class='ctlbarLine'></div>
+	<span class='ctlbarDigt'></span>
+	</div>
+	<br>
+    <label for='k'>k</label>
+    <div class='ctlbar' value='0' min='-1' max='1'>
+	<div class='ctlbarLine'></div>
+	<span class='ctlbarDigt'></span>
+	</div>
+	</div>
+  <canvas id='can' style='cursor: pointer;border:solid #D2D2D2 1px;margin:20px auto;'></canvas>
+</div>
+
+
+-->
+
+</body>
+</html>
